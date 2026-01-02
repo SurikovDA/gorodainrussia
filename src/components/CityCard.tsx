@@ -44,35 +44,23 @@ export const CityCard = ({ city, index = 0 }: CityCardProps) => {
           <span>{formatPopulation(city.population)} чел.</span>
         </div>
 
-        {/* Metrics - colored blocks like reference */}
+        {/* Metrics - soft tint + subtle border + glow effect */}
         <div className="grid grid-cols-2 gap-3 mb-5 mt-auto">
-          <div 
-            className="p-3 rounded-xl"
-            style={{
-              background: 'hsl(var(--success) / 0.15)',
-              border: '1px solid hsl(var(--success) / 0.2)',
-            }}
-          >
-            <div className="flex items-center gap-2 mb-1 text-success">
+          <div className="citygo-metric-soft citygo-metric-success">
+            <div className="flex items-center gap-2 mb-1">
               <Banknote className="w-4 h-4" />
-              <span className="text-xs opacity-80">Зарплата</span>
+              <span className="text-xs opacity-70">Зарплата</span>
             </div>
-            <p className="text-sm font-bold text-success">
+            <p className="text-sm font-bold">
               {formatCurrency(city.avgSalary)}
             </p>
           </div>
-          <div 
-            className="p-3 rounded-xl"
-            style={{
-              background: 'hsl(var(--warning) / 0.15)',
-              border: '1px solid hsl(var(--warning) / 0.2)',
-            }}
-          >
-            <div className="flex items-center gap-2 mb-1 text-warning">
+          <div className="citygo-metric-soft citygo-metric-warning">
+            <div className="flex items-center gap-2 mb-1">
               <Home className="w-4 h-4" />
-              <span className="text-xs opacity-80">Аренда 1к</span>
+              <span className="text-xs opacity-70">Аренда 1к</span>
             </div>
-            <p className="text-sm font-bold text-warning">
+            <p className="text-sm font-bold">
               {formatCurrency(city.rent1k)}
             </p>
           </div>

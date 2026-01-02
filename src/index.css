@@ -147,9 +147,19 @@
     background: hsl(var(--background));
   }
 
+  /* Site theme special gradient background */
+  .site .hero-bg {
+    background: var(--gradient-site-bg);
+  }
+
   /* Section background */
   .section-softfog {
     background: hsl(var(--background));
+  }
+
+  /* Site theme main page gradient */
+  .site-gradient-bg {
+    background: var(--gradient-site-bg);
   }
 }
 
