@@ -7,9 +7,11 @@ import { CitiesGrid } from "@/components/CitiesGrid";
 import { CTASection } from "@/components/CTASection";
 import { cities, searchCities } from "@/data/cities";
 import { useEmbed, useEmbedHeight } from "@/hooks/useEmbed";
+import { useTheme } from "@/hooks/useTheme";
 
 const Index = () => {
   const isEmbed = useEmbed();
+  const { theme } = useTheme();
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredCities, setFilteredCities] = useState(cities);
   const [isLoading, setIsLoading] = useState(true);
@@ -32,10 +34,10 @@ const Index = () => {
 
   if (isEmbed) {
     return (
-      <div className="min-h-screen section-softfog">
-        <div className="container py-6">
-          <div className="mb-6">
-            <h1 className="text-2xl font-bold gradient-text text-center mb-4">
+      <div className="min-h-screen" style={{ background: 'hsl(var(--background))' }}>
+        <div className="container py-4">
+          <div className="mb-4">
+            <h1 className="text-xl font-bold gradient-text text-center mb-3">
               Города России для переезда
             </h1>
             <SearchBar value={searchQuery} onChange={setSearchQuery} />
@@ -47,7 +49,7 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen section-softfog flex flex-col">
+    <div className="min-h-screen flex flex-col" style={{ background: 'hsl(var(--background))' }}>
       <Header />
       
       <main className="flex-1">
