@@ -1,80 +1,8 @@
+@import './styles/citygo-theme.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
-@layer base {
-  :root {
-    /* CityGo Premium Dark Theme */
-    --background: 230 50% 2%;
-    --foreground: 210 40% 98%;
-
-    --card: 230 30% 6%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 230 30% 6%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 220 70% 55%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 260 50% 50%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 230 20% 15%;
-    --muted-foreground: 215 20% 65%;
-
-    --accent: 280 60% 55%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62% 50%;
-    --destructive-foreground: 210 40% 98%;
-
-    --success: 150 60% 45%;
-    --success-foreground: 210 40% 98%;
-
-    --warning: 35 90% 55%;
-    --warning-foreground: 230 50% 10%;
-
-    --border: 230 20% 18%;
-    --input: 230 20% 18%;
-    --ring: 220 70% 55%;
-
-    --radius: 1rem;
-
-    /* Glass effects */
-    --glass-bg: 230 30% 8% / 0.6;
-    --glass-border: 220 30% 30% / 0.3;
-    --glass-blur: 20px;
-
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(220 70% 55%), hsl(260 60% 55%), hsl(300 60% 50%));
-    --gradient-accent: linear-gradient(135deg, hsl(200 80% 60%), hsl(260 70% 60%));
-    --gradient-soft: linear-gradient(180deg, hsl(230 30% 8%), hsl(230 40% 4%));
-    --gradient-card: linear-gradient(135deg, hsl(230 30% 10% / 0.8), hsl(230 30% 6% / 0.6));
-
-    /* Shadows */
-    --shadow-glow: 0 0 60px hsl(220 70% 50% / 0.15);
-    --shadow-card: 0 8px 32px hsl(0 0% 0% / 0.3);
-    --shadow-soft: 0 4px 20px hsl(0 0% 0% / 0.2);
-
-    --sidebar-background: 230 30% 6%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 220 70% 55%;
-    --sidebar-primary-foreground: 210 40% 98%;
-    --sidebar-accent: 230 20% 15%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 230 20% 18%;
-    --sidebar-ring: 220 70% 55%;
-  }
-
-  .dark {
-    /* Same as root - dark by default */
-    --background: 230 50% 2%;
-    --foreground: 210 40% 98%;
-  }
-}
 
 @layer base {
   * {
@@ -86,31 +14,37 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', system-ui, sans-serif;
-    background: hsl(var(--background));
+    font-family: 'Manrope', system-ui, sans-serif;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
 @layer components {
+  /* Glass Card - using CityGo tokens */
   .glass-card {
-    @apply relative overflow-hidden rounded-2xl border border-border/30;
-    background: linear-gradient(135deg, hsl(230 30% 10% / 0.8), hsl(230 30% 6% / 0.6));
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    @apply relative overflow-hidden;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--blur-glass));
+    -webkit-backdrop-filter: blur(var(--blur-glass));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-card);
     box-shadow: var(--shadow-card);
   }
 
   .glass-card-hover {
-    @apply glass-card transition-all duration-300;
+    @apply glass-card;
+    transition: var(--transition-smooth);
   }
 
   .glass-card-hover:hover {
-    @apply border-primary/30;
-    box-shadow: var(--shadow-glow), var(--shadow-card);
-    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-4px);
   }
 
+  /* Gradient Text */
   .gradient-text {
     background: var(--gradient-primary);
     -webkit-background-clip: text;
@@ -118,6 +52,7 @@
     background-clip: text;
   }
 
+  /* Gradient Border */
   .gradient-border {
     position: relative;
   }
@@ -136,29 +71,38 @@
     pointer-events: none;
   }
 
+  /* Buttons */
   .btn-primary-gradient {
-    @apply relative overflow-hidden rounded-xl px-6 py-3 font-semibold text-white transition-all duration-300;
+    @apply relative overflow-hidden font-semibold transition-all duration-300;
     background: var(--gradient-primary);
-    box-shadow: 0 4px 20px hsl(220 70% 50% / 0.3);
+    color: white;
+    border-radius: var(--radius-button);
+    box-shadow: var(--shadow-glow-primary);
   }
 
   .btn-primary-gradient:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 30px hsl(220 70% 50% / 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 0 32px rgba(106, 141, 255, 0.5);
   }
 
   .btn-secondary-glass {
-    @apply glass-card rounded-xl px-6 py-3 font-medium text-foreground transition-all duration-300;
+    @apply glass-card font-medium transition-all duration-300;
+    border-radius: var(--radius-button);
+    color: hsl(var(--foreground));
   }
 
   .btn-secondary-glass:hover {
-    @apply border-primary/50 bg-muted/50;
+    background: hsl(var(--muted));
+    border-color: hsl(var(--primary) / 0.5);
   }
 
+  /* Chips */
   .chip {
     @apply inline-flex items-center rounded-full px-3 py-1 text-sm font-medium;
-    background: hsl(var(--muted));
-    border: 1px solid hsl(var(--border));
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--blur-glass));
+    -webkit-backdrop-filter: blur(var(--blur-glass));
+    border: 1px solid var(--glass-border);
   }
 
   .chip-success {
@@ -182,16 +126,40 @@
     border-color: hsl(var(--destructive) / 0.3);
   }
 
+  /* Section typography */
   .section-title {
-    @apply text-lg font-semibold text-foreground mb-4;
+    @apply text-lg font-semibold mb-4;
+    color: hsl(var(--foreground));
   }
 
   .metric-value {
-    @apply text-2xl font-bold text-foreground;
+    @apply text-2xl font-bold;
+    color: hsl(var(--foreground));
   }
 
   .metric-label {
-    @apply text-sm text-muted-foreground;
+    @apply text-sm;
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Hero background with CityGo orbs */
+  .hero-bg {
+    background: 
+      radial-gradient(60% 50% at 0% 0%, rgba(166, 147, 255, 0.18), transparent 60%),
+      radial-gradient(55% 45% at 100% 0%, rgba(244, 184, 167, 0.2), transparent 60%),
+      radial-gradient(50% 50% at 0% 100%, rgba(166, 147, 255, 0.12), transparent 55%),
+      radial-gradient(55% 55% at 100% 100%, rgba(244, 184, 167, 0.18), transparent 60%),
+      var(--gradient-soft-fog);
+  }
+
+  /* Section soft-fog background */
+  .section-softfog {
+    background:
+      radial-gradient(60% 50% at 0% 0%, rgba(166, 147, 255, 0.12), transparent 55%),
+      radial-gradient(55% 45% at 100% 0%, rgba(244, 184, 167, 0.14), transparent 60%),
+      radial-gradient(50% 50% at 0% 100%, rgba(106, 141, 255, 0.12), transparent 55%),
+      radial-gradient(55% 55% at 100% 100%, rgba(244, 184, 167, 0.12), transparent 60%),
+      var(--gradient-soft-fog);
   }
 }
 
@@ -201,49 +169,35 @@
   }
 
   .animate-float {
-    animation: float 6s ease-in-out infinite;
+    animation: citygo-float 6s ease-in-out infinite;
   }
 
   .animate-glow {
-    animation: glow 3s ease-in-out infinite;
+    animation: citygo-glow 3s ease-in-out infinite;
   }
 
   .animate-fade-in {
-    animation: fadeIn 0.5s ease-out;
+    animation: citygo-fade-in 0.6s ease-out forwards;
   }
 
   .animate-slide-up {
-    animation: slideUp 0.5s ease-out;
+    animation: citygo-fade-up 0.8s ease-out forwards;
+  }
+
+  .animate-pulse-soft {
+    animation: citygo-pulse-soft 3s ease-in-out infinite;
   }
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes glow {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
+/* Skeleton loading animation */
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
 
 .skeleton {
-  @apply relative overflow-hidden rounded-lg bg-muted;
+  @apply relative overflow-hidden rounded-lg;
+  background: hsl(var(--muted));
 }
 
 .skeleton::after {

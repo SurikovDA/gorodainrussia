@@ -1,0 +1,609 @@
+/**
+ * ═══════════════════════════════════════════════════════════════════════════
+ * CITYGO THEME PACK v1.0
+ * Premium Soft-Tech Design System
+ * 
+ * Usage: Import this file in your main CSS (e.g., index.css or globals.css)
+ * @import './styles/citygo-theme.css';
+ * ═══════════════════════════════════════════════════════════════════════════
+ */
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   FONTS
+   ═══════════════════════════════════════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CSS CUSTOM PROPERTIES (Light Theme)
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root {
+  /* ─────────────────────────────────────────────────────────────────────────
+     Core Colors (HSL format for Tailwind compatibility)
+     ───────────────────────────────────────────────────────────────────────── */
+  
+  /* Background: #F6F7FB soft fog to white */
+  --background: 230 25% 98%;
+  --foreground: 230 30% 12%;
+
+  /* Card surfaces */
+  --card: 0 0% 100%;
+  --card-foreground: 230 30% 12%;
+
+  /* Popover/Dropdown */
+  --popover: 0 0% 100%;
+  --popover-foreground: 230 30% 12%;
+
+  /* Primary: #6A8DFF (brand blue) */
+  --primary: 224 100% 71%;
+  --primary-foreground: 0 0% 100%;
+
+  /* Secondary: #F4B8A7 (peach) */
+  --secondary: 17 78% 81%;
+  --secondary-foreground: 17 60% 25%;
+
+  /* Accent: #A675FF (purple) */
+  --accent: 262 100% 73%;
+  --accent-foreground: 0 0% 100%;
+
+  /* Muted surfaces */
+  --muted: 230 20% 94%;
+  --muted-foreground: 230 18% 38%;
+
+  /* Destructive/Error */
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+
+  /* Borders & Inputs */
+  --border: 230 20% 90%;
+  --input: 230 20% 90%;
+  --ring: 224 100% 71%;
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     Border Radius
+     ───────────────────────────────────────────────────────────────────────── */
+  --radius: 1.5rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-card: 24px;
+  --radius-button: 12px;
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     Brand Palette (extended colors)
+     ───────────────────────────────────────────────────────────────────────── */
+  --lavender: 260 60% 85%;
+  --lavender-light: 260 50% 95%;
+  --purple-fog: 250 60% 90%;
+  --blue-soft: 224 85% 78%;
+  --aqua: 185 60% 67%;
+  --peach: 17 78% 81%;
+  --peach-light: 17 100% 95%;
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     Gradients
+     ───────────────────────────────────────────────────────────────────────── */
+  --gradient-primary: linear-gradient(135deg, #6A8DFF 0%, #A675FF 50%, #F4B8A7 100%);
+  --gradient-soft-fog: linear-gradient(180deg, #F6F7FB 0%, #FFFFFF 100%);
+  --gradient-dark-premium: linear-gradient(135deg, #1F1F33 0%, #3A1E70 50%, #2CC6E6 100%);
+  --gradient-hero: linear-gradient(135deg, #6A8DFF 0%, #A675FF 50%, #F4B8A7 100%);
+  --gradient-card: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 100%);
+  --gradient-fog: linear-gradient(180deg, #F6F7FB 0%, #FFFFFF 100%);
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     Shadows
+     ───────────────────────────────────────────────────────────────────────── */
+  --shadow-soft: 0 12px 40px rgba(0, 0, 0, 0.12);
+  --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.12);
+  --shadow-hover: 0 20px 50px rgba(0, 0, 0, 0.15);
+  --shadow-glow: 0 0 24px rgba(166, 117, 255, 0.35);
+  --shadow-glow-primary: 0 0 24px rgba(106, 141, 255, 0.4);
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.08);
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     Glass / Blur Effects
+     ───────────────────────────────────────────────────────────────────────── */
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --blur-glass: 20px;
+  --blur-soft: 28px;
+  --blur-panel: 24px;
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     Focus Ring
+     ───────────────────────────────────────────────────────────────────────── */
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+  --focus-ring-color: hsl(224 100% 71% / 0.5);
+
+  /* ─────────────────────────────────────────────────────────────────────────
+     Transitions
+     ───────────────────────────────────────────────────────────────────────── */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.3s ease;
+  --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DARK THEME
+   ═══════════════════════════════════════════════════════════════════════════ */
+.dark {
+  --background: 230 25% 8%;
+  --foreground: 240 20% 95%;
+  --card: 230 25% 12%;
+  --card-foreground: 240 20% 95%;
+  --popover: 230 25% 12%;
+  --popover-foreground: 240 20% 95%;
+  --primary: 224 100% 71%;
+  --primary-foreground: 230 25% 8%;
+  --secondary: 17 78% 81%;
+  --secondary-foreground: 240 20% 95%;
+  --muted: 230 20% 18%;
+  --muted-foreground: 230 15% 60%;
+  --accent: 262 100% 73%;
+  --accent-foreground: 0 0% 100%;
+  --border: 230 20% 20%;
+  --input: 230 20% 20%;
+  --ring: 224 100% 71%;
+
+  --glass-bg: rgba(30, 30, 50, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BASE STYLES
+   ═══════════════════════════════════════════════════════════════════════════ */
+.citygo-base * {
+  border-color: hsl(var(--border));
+}
+
+.citygo-base html {
+  scroll-behavior: smooth;
+}
+
+.citygo-base body,
+.citygo-body {
+  font-family: 'Manrope', system-ui, sans-serif;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hero background with ambient orbs */
+.citygo-hero-bg {
+  background: 
+    radial-gradient(60% 50% at 0% 0%, rgba(166, 147, 255, 0.18), transparent 60%),
+    radial-gradient(55% 45% at 100% 0%, rgba(244, 184, 167, 0.2), transparent 60%),
+    radial-gradient(50% 50% at 0% 100%, rgba(166, 147, 255, 0.12), transparent 55%),
+    radial-gradient(55% 55% at 100% 100%, rgba(244, 184, 167, 0.18), transparent 60%),
+    linear-gradient(180deg, #f6f7fb 0%, #ffffff 100%);
+}
+
+/* Section soft-fog background */
+.citygo-section-softfog {
+  background:
+    radial-gradient(60% 50% at 0% 0%, rgba(166, 147, 255, 0.12), transparent 55%),
+    radial-gradient(55% 45% at 100% 0%, rgba(244, 184, 167, 0.14), transparent 60%),
+    radial-gradient(50% 50% at 0% 100%, rgba(106, 141, 255, 0.12), transparent 55%),
+    radial-gradient(55% 55% at 100% 100%, rgba(244, 184, 167, 0.12), transparent 60%),
+    linear-gradient(180deg, #f6f7fb 0%, #ffffff 100%);
+}
+
+/* Typography */
+.citygo-base h1,
+.citygo-base h2,
+.citygo-base h3,
+.citygo-base h4,
+.citygo-base h5,
+.citygo-base h6 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.citygo-base p {
+  line-height: 1.75;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   COMPONENT CLASSES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Glass Card
+   ───────────────────────────────────────────────────────────────────────── */
+.citygo-glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--blur-glass));
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.citygo-glass-card-hover {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--blur-glass));
+  -webkit-backdrop-filter: blur(var(--blur-glass));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-smooth);
+}
+
+.citygo-glass-card-hover:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Soft-Tech Card
+   ───────────────────────────────────────────────────────────────────────── */
+.citygo-soft-tech-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 24px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  transition: var(--transition-smooth);
+}
+
+.citygo-soft-tech-card:hover {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Glass Panel (larger surfaces)
+   ───────────────────────────────────────────────────────────────────────── */
+.citygo-glass-panel {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(var(--blur-panel));
+  -webkit-backdrop-filter: blur(var(--blur-panel));
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Buttons
+   ───────────────────────────────────────────────────────────────────────── */
+.citygo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  border-radius: var(--radius-button);
+  padding: 0.75rem 1.5rem;
+  font-size: 0.938rem;
+  transition: var(--transition-base);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.citygo-btn:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* Primary Button */
+.citygo-btn-primary {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  box-shadow: var(--shadow-glow-primary);
+}
+
+.citygo-btn-primary:hover {
+  background: hsl(224 100% 65%);
+  box-shadow: 0 0 32px rgba(106, 141, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Secondary Button */
+.citygo-btn-secondary {
+  background: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
+}
+
+.citygo-btn-secondary:hover {
+  background: hsl(17 78% 75%);
+  transform: translateY(-1px);
+}
+
+/* Ghost Button */
+.citygo-btn-ghost {
+  background: transparent;
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+}
+
+.citygo-btn-ghost:hover {
+  background: hsl(var(--muted));
+}
+
+/* Glow Button (accent CTA) */
+.citygo-btn-glow {
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: var(--shadow-glow);
+}
+
+.citygo-btn-glow:hover {
+  box-shadow: 0 0 32px rgba(166, 117, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Input
+   ───────────────────────────────────────────────────────────────────────── */
+.citygo-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.938rem;
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius-button);
+  color: hsl(var(--foreground));
+  transition: var(--transition-fast);
+}
+
+.citygo-input::placeholder {
+  color: hsl(var(--muted-foreground));
+}
+
+.citygo-input:focus {
+  outline: none;
+  border-color: hsl(var(--ring));
+  box-shadow: 0 0 0 3px var(--focus-ring-color);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Badge / Chip
+   ───────────────────────────────────────────────────────────────────────── */
+.citygo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.875rem;
+  font-family: 'Manrope', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  background: hsl(var(--muted));
+  color: hsl(var(--muted-foreground));
+}
+
+.citygo-badge-primary {
+  background: hsl(var(--primary) / 0.15);
+  color: hsl(var(--primary));
+}
+
+.citygo-badge-accent {
+  background: hsl(var(--accent) / 0.15);
+  color: hsl(var(--accent));
+}
+
+.citygo-badge-secondary {
+  background: hsl(var(--secondary) / 0.3);
+  color: hsl(var(--secondary-foreground));
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Section Card (feature boxes)
+   ───────────────────────────────────────────────────────────────────────── */
+.citygo-section-card {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius-card);
+  padding: 2rem;
+  box-shadow: var(--shadow-soft);
+  transition: var(--transition-smooth);
+}
+
+.citygo-section-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DECORATIVE ELEMENTS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Ambient Glow Orbs */
+.citygo-soft-orb {
+  position: absolute;
+  background: radial-gradient(circle at 30% 30%, rgba(166, 147, 255, 0.6), rgba(106, 141, 255, 0.15) 50%, transparent 70%);
+  filter: blur(var(--blur-soft));
+  opacity: 0.7;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+/* Fog Overlay */
+.citygo-fog-overlay {
+  position: relative;
+}
+
+.citygo-fog-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, hsl(250 60% 95% / 0.8) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Gradients (utility classes)
+   ───────────────────────────────────────────────────────────────────────── */
+.citygo-gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.citygo-gradient-hero {
+  background: var(--gradient-hero);
+}
+
+.citygo-gradient-fog {
+  background: var(--gradient-fog);
+}
+
+.citygo-gradient-soft-fog {
+  background: var(--gradient-soft-fog);
+}
+
+.citygo-gradient-dark-premium {
+  background: var(--gradient-dark-premium);
+}
+
+/* Text Gradient */
+.citygo-text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow effects */
+.citygo-glow-soft {
+  box-shadow: 
+    0 12px 40px rgba(106, 141, 255, 0.2),
+    0 0 48px rgba(166, 117, 255, 0.25);
+}
+
+.citygo-glow-primary {
+  box-shadow: var(--shadow-glow-primary);
+}
+
+.citygo-glow-accent {
+  box-shadow: var(--shadow-glow);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+@keyframes citygo-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes citygo-pulse-soft {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes citygo-glow {
+  0%, 100% {
+    opacity: 0.8;
+    filter: blur(20px);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(30px);
+  }
+}
+
+@keyframes citygo-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes citygo-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.citygo-animate-float {
+  animation: citygo-float 6s ease-in-out infinite;
+}
+
+.citygo-animate-pulse-soft {
+  animation: citygo-pulse-soft 3s ease-in-out infinite;
+}
+
+.citygo-animate-glow {
+  animation: citygo-glow 3s ease-in-out infinite;
+}
+
+.citygo-animate-fade-up {
+  animation: citygo-fade-up 0.8s ease-out forwards;
+}
+
+.citygo-animate-fade-in {
+  animation: citygo-fade-in 0.6s ease-out forwards;
+}
+
+/* Animation delays */
+.citygo-delay-100 { animation-delay: 100ms; }
+.citygo-delay-200 { animation-delay: 200ms; }
+.citygo-delay-300 { animation-delay: 300ms; }
+.citygo-delay-400 { animation-delay: 400ms; }
+.citygo-delay-500 { animation-delay: 500ms; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   UTILITY CLASSES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Section spacing: 80px desktop / 56px mobile */
+.citygo-section-spacing {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  .citygo-section-spacing {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+/* Container */
+.citygo-container {
+  width: 100%;
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .citygo-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .citygo-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Text content max-width */
+.citygo-text-content {
+  max-width: 700px;
+}

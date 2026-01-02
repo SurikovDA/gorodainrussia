@@ -23,7 +23,11 @@ export const PriceList = ({ prices, isRent = false }: PriceListProps) => {
       {labels.map(({ key, label }) => (
         <div 
           key={key} 
-          className="flex items-center justify-between p-3 rounded-lg bg-muted/30 border border-border/30"
+          className="flex items-center justify-between p-3 rounded-lg"
+          style={{
+            background: 'var(--glass-bg)',
+            border: '1px solid var(--glass-border)',
+          }}
         >
           <span className="text-sm text-muted-foreground">{label}</span>
           <span className="text-sm font-medium text-foreground">

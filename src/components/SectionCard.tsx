@@ -14,7 +14,13 @@ export const SectionCard = ({ title, icon: Icon, children, className }: SectionC
     <GlassCard className={cn("animate-slide-up", className)}>
       <div className="flex items-center gap-3 mb-4">
         {Icon && (
-          <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
+          <div 
+            className="p-2 rounded-lg"
+            style={{
+              background: 'hsl(var(--primary) / 0.12)',
+              border: '1px solid hsl(var(--primary) / 0.2)',
+            }}
+          >
             <Icon className="w-5 h-5 text-primary" />
           </div>
         )}

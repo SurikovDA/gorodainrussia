@@ -8,32 +8,43 @@ interface MetricCardProps {
   variant?: "default" | "success" | "warning";
 }
 
-const variantClasses = {
-  default: "bg-muted/50 border-border/50",
-  success: "bg-success/10 border-success/20",
-  warning: "bg-warning/10 border-warning/20"
-};
-
-const iconClasses = {
-  default: "text-muted-foreground",
-  success: "text-success",
-  warning: "text-warning"
-};
-
-const valueClasses = {
-  default: "text-foreground",
-  success: "text-success",
-  warning: "text-warning"
+const variantStyles = {
+  default: {
+    background: 'var(--glass-bg)',
+    border: '1px solid var(--glass-border)',
+    iconColor: 'hsl(var(--muted-foreground))',
+    valueColor: 'hsl(var(--foreground))',
+  },
+  success: {
+    background: 'hsl(150 60% 45% / 0.12)',
+    border: '1px solid hsl(150 60% 45% / 0.25)',
+    iconColor: 'hsl(150 60% 40%)',
+    valueColor: 'hsl(150 60% 35%)',
+  },
+  warning: {
+    background: 'hsl(35 90% 55% / 0.12)',
+    border: '1px solid hsl(35 90% 55% / 0.25)',
+    iconColor: 'hsl(35 90% 45%)',
+    valueColor: 'hsl(35 80% 40%)',
+  },
 };
 
 export const MetricCard = ({ icon: Icon, label, value, variant = "default" }: MetricCardProps) => {
+  const styles = variantStyles[variant];
+  
   return (
-    <div className={cn("p-4 rounded-xl border", variantClasses[variant])}>
-      <div className={cn("flex items-center gap-2 mb-2", iconClasses[variant])}>
+    <div 
+      className={cn("p-4 rounded-xl")}
+      style={{
+        background: styles.background,
+        border: styles.border,
+      }}
+    >
+      <div className="flex items-center gap-2 mb-2" style={{ color: styles.iconColor }}>
         <Icon className="w-4 h-4" />
         <span className="text-sm">{label}</span>
       </div>
-      <p className={cn("text-xl font-bold", valueClasses[variant])}>{value}</p>
+      <p className="text-xl font-bold" style={{ color: styles.valueColor }}>{value}</p>
     </div>
   );
 };

@@ -2,7 +2,6 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import { ArrowLeft, Users, Banknote, Home, Factory, Briefcase, GraduationCap, TrendingUp, TrendingDown, Building2, MapPin, Info } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { GlassCard } from "@/components/GlassCard";
 import { SectionCard } from "@/components/SectionCard";
 import { MetricCard } from "@/components/MetricCard";
 import { Chips } from "@/components/Chips";
@@ -10,8 +9,6 @@ import { PriceList } from "@/components/PriceList";
 import { ProfessionList } from "@/components/ProfessionList";
 import { TipsList } from "@/components/TipsList";
 import { CTASection } from "@/components/CTASection";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { getCityBySlug } from "@/data/cities";
 import { formatCurrency, formatPopulation } from "@/lib/formatters";
 import { useEmbed, useEmbedHeight } from "@/hooks/useEmbed";
@@ -31,18 +28,25 @@ const CityDetail = () => {
     <div className="container py-8 space-y-8">
       {/* Back Button & Header */}
       <div className="animate-fade-in">
-        <Button asChild variant="ghost" className="mb-4 text-muted-foreground hover:text-foreground">
-          <Link to={isEmbed ? "/embed" : "/"}>
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Назад к списку
-          </Link>
-        </Button>
+        <Link 
+          to={isEmbed ? "/embed" : "/"}
+          className="inline-flex items-center gap-2 mb-4 text-muted-foreground hover:text-foreground transition-colors"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Назад к списку
+        </Link>
         
         <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-2">
           <h1 className="text-3xl md:text-4xl font-bold gradient-text">{city.name}</h1>
-          <Badge variant="secondary" className="w-fit bg-secondary/50 border-secondary/30">
+          <span 
+            className="w-fit px-3 py-1 rounded-full text-sm font-medium"
+            style={{
+              background: 'hsl(var(--secondary) / 0.3)',
+              color: 'hsl(var(--secondary-foreground))',
+            }}
+          >
             {city.region}
-          </Badge>
+          </span>
         </div>
       </div>
 
@@ -127,14 +131,14 @@ const CityDetail = () => {
 
   if (isEmbed) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen section-softfog">
         {content}
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen section-softfog flex flex-col">
       <Header />
       <main className="flex-1">
         {content}
