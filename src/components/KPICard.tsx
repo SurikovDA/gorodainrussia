@@ -18,8 +18,8 @@ export const KPICard = ({ icon: Icon, value, label, delay = 0 }: KPICardProps) =
         <div 
           className="p-3 rounded-xl"
           style={{
-            background: 'hsl(var(--primary) / 0.12)',
-            border: '1px solid hsl(var(--primary) / 0.2)',
+            background: 'hsl(var(--muted) / 0.8)',
+            border: '1px solid var(--glass-border)',
           }}
         >
           <Icon className="w-6 h-6 text-primary" />

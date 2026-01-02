@@ -35,11 +35,11 @@ export default {
           foreground: "hsl(var(--destructive-foreground))",
         },
         success: {
-          DEFAULT: "hsl(150 60% 45%)",
+          DEFAULT: "hsl(var(--success))",
           foreground: "hsl(0 0% 100%)",
         },
         warning: {
-          DEFAULT: "hsl(35 90% 55%)",
+          DEFAULT: "hsl(var(--warning))",
           foreground: "hsl(230 50% 10%)",
         },
         muted: {
