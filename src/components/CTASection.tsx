@@ -36,7 +36,7 @@ export const CTASection = ({ cityName }: CTASectionProps) => {
             className="citygo-btn citygo-btn-ghost w-full sm:w-auto px-8 py-4 text-base flex items-center justify-center gap-2"
           >
             <Send className="w-5 h-5" />
-            Перейти в Telegram
+            В CityGo
           </a>
         </div>
       </div>
