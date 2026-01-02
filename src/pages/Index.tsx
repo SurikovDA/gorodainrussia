@@ -32,7 +32,7 @@ const Index = () => {
 
   if (isEmbed) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen section-softfog">
         <div className="container py-6">
           <div className="mb-6">
             <h1 className="text-2xl font-bold gradient-text text-center mb-4">
@@ -47,7 +47,7 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen section-softfog flex flex-col">
       <Header />
       
       <main className="flex-1">

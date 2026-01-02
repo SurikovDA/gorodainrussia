@@ -4,11 +4,31 @@ import { KPI_DATA } from "@/lib/constants";
 
 export const Hero = () => {
   return (
-    <section className="relative py-16 md:py-24 overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
+    <section className="relative py-16 md:py-24 overflow-hidden hero-bg">
+      {/* Soft Orbs */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div 
+          className="absolute -top-20 -left-20 w-80 h-80 rounded-full animate-float animate-pulse-soft"
+          style={{
+            background: 'radial-gradient(circle at 30% 30%, rgba(166, 147, 255, 0.4), rgba(106, 141, 255, 0.15) 50%, transparent 70%)',
+            filter: 'blur(28px)',
+          }}
+        />
+        <div 
+          className="absolute -bottom-20 -right-20 w-96 h-96 rounded-full animate-float animate-pulse-soft"
+          style={{
+            background: 'radial-gradient(circle at 30% 30%, rgba(244, 184, 167, 0.4), rgba(166, 117, 255, 0.15) 50%, transparent 70%)',
+            filter: 'blur(28px)',
+            animationDelay: '2s',
+          }}
+        />
+        <div 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full animate-glow"
+          style={{
+            background: 'radial-gradient(circle, rgba(106, 141, 255, 0.2), transparent 60%)',
+            filter: 'blur(40px)',
+          }}
+        />
       </div>
 
       <div className="container relative z-10">

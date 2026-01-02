@@ -1,5 +1,4 @@
 import { Search, X } from "lucide-react";
-import { Input } from "@/components/ui/input";
 
 interface SearchBarProps {
   value: string;
@@ -13,12 +12,15 @@ export const SearchBar = ({ value, onChange, placeholder = "Поиск по на
       <div className="glass-card overflow-hidden">
         <div className="relative flex items-center">
           <Search className="absolute left-4 w-5 h-5 text-muted-foreground" />
-          <Input
+          <input
             type="text"
             value={value}
             onChange={(e) => onChange(e.target.value)}
             placeholder={placeholder}
-            className="w-full pl-12 pr-12 py-6 bg-transparent border-0 text-foreground placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0 text-base"
+            className="citygo-input w-full pl-12 pr-12 py-4 bg-transparent border-0 focus:ring-0 focus:outline-none"
+            style={{
+              background: 'transparent',
+            }}
           />
           {value && (
             <button

@@ -24,7 +24,7 @@ const Embed = () => {
   }, [searchQuery]);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen section-softfog">
       <div className="container py-6">
         <div className="mb-6">
           <h1 className="text-2xl font-bold gradient-text text-center mb-4">

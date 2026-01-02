@@ -14,9 +14,18 @@ export const TipsList = ({ tips }: TipsListProps) => {
       {tips.map((tip, index) => (
         <div 
           key={index} 
-          className="flex items-start gap-3 p-4 rounded-xl bg-primary/5 border border-primary/10"
+          className="flex items-start gap-3 p-4 rounded-xl"
+          style={{
+            background: 'hsl(var(--primary) / 0.08)',
+            border: '1px solid hsl(var(--primary) / 0.15)',
+          }}
         >
-          <div className="p-1.5 rounded-lg bg-primary/10 shrink-0">
+          <div 
+            className="p-1.5 rounded-lg shrink-0"
+            style={{
+              background: 'hsl(var(--primary) / 0.12)',
+            }}
+          >
             <Lightbulb className="w-4 h-4 text-primary" />
           </div>
           <p className="text-sm text-foreground leading-relaxed">{tip}</p>
