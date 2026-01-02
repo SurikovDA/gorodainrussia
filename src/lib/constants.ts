@@ -3,8 +3,8 @@ export const CITYGO_MAIN_URL = "https://ситиго.рф";
 export const CITYGO_LEGAL_URL = "https://ситиго.рф/legal";
 export const CITYGO_TELEGRAM_URL = "https://t.me/+nt8sha6JY3wwZTVi";
 
-// Form URL - replace with actual form URL
-export const FORM_URL = "#";
+// Form URL
+export const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdljJd_M9n1k6y8wIw9MFC2Li3VBAWJgpV09Qzb-kNiTKKh3A/viewform?usp=header";
 
 // Analytics
 export const YM_ID = import.meta.env.VITE_YM_ID || null;
