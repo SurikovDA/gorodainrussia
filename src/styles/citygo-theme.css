@@ -1,7 +1,7 @@
 /**
  * ═══════════════════════════════════════════════════════════════════════════
- * CITYGO THEME PACK v2.0
- * Premium Soft-Tech Design System with Light/Dark themes
+ * CITYGO THEME PACK v3.0
+ * Premium Soft-Tech Design System with Light/Dark/Site themes
  * ═══════════════════════════════════════════════════════════════════════════
  */
 
@@ -11,7 +11,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   CSS CUSTOM PROPERTIES (Light Theme - Default)
+   CSS CUSTOM PROPERTIES - LIGHT THEME (Default)
    ═══════════════════════════════════════════════════════════════════════════ */
 :root {
   /* Core Colors */
@@ -92,7 +92,69 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   DARK THEME - Premium Dark Glass (like CityGo reference)
+   SITE THEME - Matches ситиго.рф (soft glass, no bright blue fills)
+   ═══════════════════════════════════════════════════════════════════════════ */
+.site {
+  /* Core Colors - very subtle warm tones */
+  --background: 220 15% 97%;
+  --foreground: 220 25% 18%;
+  --background-2: 220 12% 94%;
+
+  /* Card surfaces - softer glass */
+  --card: 0 0% 100%;
+  --card-foreground: 220 25% 18%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 25% 18%;
+
+  /* Primary - softer, less saturated */
+  --primary: 220 60% 55%;
+  --primary-foreground: 0 0% 100%;
+
+  /* Secondary - warm peach/coral */
+  --secondary: 20 65% 75%;
+  --secondary-foreground: 20 45% 25%;
+
+  /* Accent - muted purple */
+  --accent: 260 55% 62%;
+  --accent-foreground: 0 0% 100%;
+
+  /* Muted surfaces */
+  --muted: 220 15% 92%;
+  --muted-foreground: 220 12% 48%;
+
+  /* Status colors */
+  --success: 145 45% 42%;
+  --warning: 35 70% 52%;
+  --destructive: 0 55% 52%;
+  --destructive-foreground: 0 0% 100%;
+
+  /* Borders - very subtle */
+  --border: 220 15% 88%;
+  --input: 220 15% 92%;
+  --ring: 220 60% 55%;
+
+  /* Gradients - softer */
+  --gradient-primary: linear-gradient(135deg, hsl(220 60% 55%) 0%, hsl(260 55% 62%) 50%, hsl(20 65% 75%) 100%);
+  --gradient-soft-fog: linear-gradient(180deg, hsl(220 15% 97%) 0%, hsl(0 0% 100%) 100%);
+
+  /* Shadows - softer */
+  --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.06);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.08);
+  --shadow-glow: 0 0 20px rgba(150, 120, 200, 0.2);
+  --shadow-glow-primary: 0 0 20px rgba(100, 130, 200, 0.25);
+
+  /* Glass - more transparent */
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.5);
+
+  /* Focus */
+  --focus-ring-color: hsl(220 60% 55% / 0.35);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DARK THEME - Premium Dark Glass
    ═══════════════════════════════════════════════════════════════════════════ */
 .dark {
   /* Core Colors - very dark background like #080812 */
@@ -147,6 +209,21 @@
 
   /* Focus */
   --focus-ring-color: hsl(224 90% 70% / 0.5);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   EMBED MODE - Transparent background support
+   ═══════════════════════════════════════════════════════════════════════════ */
+.embed-mode {
+  --background: 0 0% 100% / 0;
+}
+
+.embed-mode.dark {
+  --background: 235 40% 4% / 0.95;
+}
+
+.embed-mode.site {
+  --background: 220 15% 97% / 0;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════

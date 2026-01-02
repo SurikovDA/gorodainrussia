@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
-import { Map, ExternalLink, Send, Menu, X } from "lucide-react";
+import { Map, ExternalLink, Send, Menu, X, Moon, Sun, Palette } from "lucide-react";
 import { CITYGO_MAIN_URL, CITYGO_TELEGRAM_URL, FORM_URL } from "@/lib/constants";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { ThemeToggle } from "./ThemeToggle";
+import { useTheme } from "@/hooks/useTheme";
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { theme, cycleToDarkOrLight, isDark } = useTheme();
 
   return (
     <>
@@ -57,7 +58,17 @@ export const Header = () => {
               <Send className="w-4 h-4 mr-2" />
               В CityGo
             </a>
-            <ThemeToggle />
+            <button
+              onClick={cycleToDarkOrLight}
+              className="citygo-btn citygo-btn-ghost p-2.5"
+              aria-label="Toggle theme"
+            >
+              {isDark ? (
+                <Sun className="w-4 h-4" />
+              ) : (
+                <Moon className="w-4 h-4" />
+              )}
+            </button>
             <a 
               href={FORM_URL} 
               target="_blank" 
@@ -70,7 +81,17 @@ export const Header = () => {
 
           {/* Mobile Actions */}
           <div className="flex items-center gap-2 md:hidden">
-            <ThemeToggle />
+            <button
+              onClick={cycleToDarkOrLight}
+              className="p-2 rounded-lg hover:bg-muted/50 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {isDark ? (
+                <Sun className="w-5 h-5" />
+              ) : (
+                <Moon className="w-5 h-5" />
+              )}
+            </button>
             <button 
               className="p-2 rounded-lg hover:bg-muted/50 transition-colors"
               onClick={() => setMobileMenuOpen(true)}

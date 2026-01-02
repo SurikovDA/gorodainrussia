@@ -11,6 +11,9 @@ interface CityCardProps {
 }
 
 export const CityCard = ({ city, index = 0 }: CityCardProps) => {
+  // Build form URL with utm_city parameter
+  const formUrlWithCity = `${FORM_URL}${FORM_URL.includes('?') ? '&' : '?'}utm_city=${city.slug}`;
+
   return (
     <GlassCard 
       hover 
@@ -88,7 +91,7 @@ export const CityCard = ({ city, index = 0 }: CityCardProps) => {
             <ArrowRight className="w-4 h-4" />
           </Link>
           <a 
-            href={FORM_URL} 
+            href={formUrlWithCity} 
             target="_blank" 
             rel="noopener noreferrer"
             className="citygo-btn btn-primary-gradient px-4 py-2.5 flex items-center gap-2"

@@ -60,7 +60,7 @@ export const Footer = () => {
               rel="noopener noreferrer"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
             >
-              Правовая информация
+              Правовая информация CityGo
               <ExternalLink className="w-3 h-3" />
             </a>
           </nav>

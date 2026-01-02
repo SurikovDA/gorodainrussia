@@ -1,11 +1,11 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 
-type Theme = 'light' | 'dark';
+export type Theme = 'light' | 'dark' | 'site';
 
 const STORAGE_KEY = 'citygo-theme';
 
-const getSystemTheme = (): Theme => {
+const getSystemTheme = (): 'light' | 'dark' => {
   if (typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     return 'dark';
   }
@@ -19,7 +19,7 @@ const getInitialTheme = (urlTheme: Theme | null): Theme => {
   // Then localStorage
   if (typeof window !== 'undefined') {
     const stored = localStorage.getItem(STORAGE_KEY) as Theme | null;
-    if (stored === 'light' || stored === 'dark') return stored;
+    if (stored === 'light' || stored === 'dark' || stored === 'site') return stored;
   }
   
   // Then system preference
@@ -35,7 +35,7 @@ export const useTheme = () => {
   const getUrlTheme = useCallback((): Theme | null => {
     const searchParams = new URLSearchParams(location.search);
     const urlTheme = searchParams.get('theme');
-    if (urlTheme === 'light' || urlTheme === 'dark') return urlTheme;
+    if (urlTheme === 'light' || urlTheme === 'dark' || urlTheme === 'site') return urlTheme;
     return null;
   }, [location.search]);
 
@@ -53,10 +53,16 @@ export const useTheme = () => {
     
     const root = document.documentElement;
     
+    // Remove all theme classes
+    root.classList.remove('dark', 'light', 'site');
+    
+    // Add appropriate class
     if (theme === 'dark') {
       root.classList.add('dark');
+    } else if (theme === 'site') {
+      root.classList.add('site');
     } else {
-      root.classList.remove('dark');
+      root.classList.add('light');
     }
   }, [theme, isInitialized]);
 
@@ -93,7 +99,16 @@ export const useTheme = () => {
   }, []);
 
   const toggleTheme = useCallback(() => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
+    // Cycle through themes: light -> dark -> site -> light
+    const themeOrder: Theme[] = ['light', 'dark', 'site'];
+    const currentIndex = themeOrder.indexOf(theme);
+    const nextIndex = (currentIndex + 1) % themeOrder.length;
+    setTheme(themeOrder[nextIndex]);
+  }, [theme, setTheme]);
+
+  const cycleToDarkOrLight = useCallback(() => {
+    // Simple toggle between light and dark
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
   }, [theme, setTheme]);
 
@@ -101,7 +116,9 @@ export const useTheme = () => {
     theme,
     setTheme,
     toggleTheme,
+    cycleToDarkOrLight,
     isDark: theme === 'dark',
     isLight: theme === 'light',
+    isSite: theme === 'site',
   };
 };

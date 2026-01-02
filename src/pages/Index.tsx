@@ -5,22 +5,24 @@ import { Hero } from "@/components/Hero";
 import { SearchBar } from "@/components/SearchBar";
 import { CitiesGrid } from "@/components/CitiesGrid";
 import { CTASection } from "@/components/CTASection";
+import { CompactCTA } from "@/components/CompactCTA";
+import { CompactHero } from "@/components/CompactHero";
 import { cities, searchCities } from "@/data/cities";
-import { useEmbed, useEmbedHeight } from "@/hooks/useEmbed";
+import { useEmbedHeight, useEmbedMode } from "@/hooks/useEmbed";
+import { useDisplayMode } from "@/hooks/useDisplayMode";
 import { useTheme } from "@/hooks/useTheme";
 
 const Index = () => {
-  const isEmbed = useEmbed();
-  const { theme } = useTheme();
+  const { mode, limit, isEmbed } = useDisplayMode();
+  useTheme();
+  useEmbedMode();
+  useEmbedHeight();
+
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredCities, setFilteredCities] = useState(cities);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Send embed height updates
-  useEmbedHeight();
-
   useEffect(() => {
-    // Simulate loading for skeleton display
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 500);
@@ -32,22 +34,50 @@ const Index = () => {
     setFilteredCities(results);
   }, [searchQuery]);
 
+  // Limit cities for compact mode
+  const displayCities = mode === 'compact' 
+    ? filteredCities.slice(0, limit) 
+    : filteredCities;
+
+  // Embed mode: minimal layout without header/footer
   if (isEmbed) {
     return (
-      <div className="min-h-screen" style={{ background: 'hsl(var(--background))' }}>
-        <div className="container py-4">
+      <div 
+        className="min-h-screen"
+        style={{ background: 'hsl(var(--background))' }}
+      >
+        <div className="px-3 py-4">
+          <CompactHero />
           <div className="mb-4">
-            <h1 className="text-xl font-bold gradient-text text-center mb-3">
-              Города России для переезда
-            </h1>
             <SearchBar value={searchQuery} onChange={setSearchQuery} />
           </div>
-          <CitiesGrid cities={filteredCities} isLoading={isLoading} />
+          <CitiesGrid cities={displayCities} isLoading={isLoading} />
+          <CompactCTA />
         </div>
       </div>
     );
   }
 
+  // Compact mode (for landing page embedding without iframe)
+  if (mode === 'compact') {
+    return (
+      <div 
+        className="min-h-screen"
+        style={{ background: 'hsl(var(--background))' }}
+      >
+        <div className="container py-6">
+          <CompactHero />
+          <div className="mb-4">
+            <SearchBar value={searchQuery} onChange={setSearchQuery} />
+          </div>
+          <CitiesGrid cities={displayCities} isLoading={isLoading} />
+          <CompactCTA />
+        </div>
+      </div>
+    );
+  }
+
+  // Full mode (default)
   return (
     <div className="min-h-screen flex flex-col" style={{ background: 'hsl(var(--background))' }}>
       <Header />
