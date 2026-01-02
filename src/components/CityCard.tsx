@@ -18,16 +18,16 @@ export const CityCard = ({ city, index = 0 }: CityCardProps) => {
       className="animate-slide-up flex flex-col h-full"
       style={{ animationDelay: `${index * 50}ms` }}
     >
-      <div className="p-6 flex flex-col h-full">
+      <div className="p-5 flex flex-col h-full">
         {/* Header */}
-        <div className="mb-4">
+        <div className="mb-3">
           <div className="flex items-start justify-between gap-2 mb-2">
-            <h3 className="text-xl font-semibold text-foreground">{city.name}</h3>
+            <h3 className="text-lg font-semibold text-foreground">{city.name}</h3>
             <span 
               className="shrink-0 text-xs px-3 py-1 rounded-full font-medium"
               style={{
-                background: 'hsl(var(--secondary) / 0.3)',
-                color: 'hsl(var(--secondary-foreground))',
+                background: 'linear-gradient(135deg, hsl(var(--secondary)) 0%, hsl(var(--accent)) 100%)',
+                color: 'white',
               }}
             >
               {city.region}
@@ -44,35 +44,35 @@ export const CityCard = ({ city, index = 0 }: CityCardProps) => {
           <span>{formatPopulation(city.population)} чел.</span>
         </div>
 
-        {/* Metrics */}
-        <div className="grid grid-cols-2 gap-3 mb-6 mt-auto">
+        {/* Metrics - colored blocks like reference */}
+        <div className="grid grid-cols-2 gap-3 mb-5 mt-auto">
           <div 
             className="p-3 rounded-xl"
             style={{
-              background: 'hsl(150 60% 45% / 0.12)',
-              border: '1px solid hsl(150 60% 45% / 0.25)',
+              background: 'hsl(var(--success) / 0.15)',
+              border: '1px solid hsl(var(--success) / 0.2)',
             }}
           >
-            <div className="flex items-center gap-2 mb-1" style={{ color: 'hsl(150 60% 40%)' }}>
+            <div className="flex items-center gap-2 mb-1 text-success">
               <Banknote className="w-4 h-4" />
-              <span className="text-xs">Зарплата</span>
+              <span className="text-xs opacity-80">Зарплата</span>
             </div>
-            <p className="text-sm font-semibold" style={{ color: 'hsl(150 60% 35%)' }}>
+            <p className="text-sm font-bold text-success">
               {formatCurrency(city.avgSalary)}
             </p>
           </div>
           <div 
             className="p-3 rounded-xl"
             style={{
-              background: 'hsl(35 90% 55% / 0.12)',
-              border: '1px solid hsl(35 90% 55% / 0.25)',
+              background: 'hsl(var(--warning) / 0.15)',
+              border: '1px solid hsl(var(--warning) / 0.2)',
             }}
           >
-            <div className="flex items-center gap-2 mb-1" style={{ color: 'hsl(35 90% 45%)' }}>
+            <div className="flex items-center gap-2 mb-1 text-warning">
               <Home className="w-4 h-4" />
-              <span className="text-xs">Аренда 1к</span>
+              <span className="text-xs opacity-80">Аренда 1к</span>
             </div>
-            <p className="text-sm font-semibold" style={{ color: 'hsl(35 80% 40%)' }}>
+            <p className="text-sm font-bold text-warning">
               {formatCurrency(city.rent1k)}
             </p>
           </div>
@@ -82,7 +82,7 @@ export const CityCard = ({ city, index = 0 }: CityCardProps) => {
         <div className="flex gap-2">
           <Link 
             to={`/city/${city.slug}`}
-            className="flex-1 citygo-btn citygo-btn-ghost flex items-center justify-center gap-2"
+            className="flex-1 citygo-btn citygo-btn-ghost flex items-center justify-center gap-2 py-2.5"
           >
             Подробнее
             <ArrowRight className="w-4 h-4" />
@@ -91,7 +91,7 @@ export const CityCard = ({ city, index = 0 }: CityCardProps) => {
             href={FORM_URL} 
             target="_blank" 
             rel="noopener noreferrer"
-            className="citygo-btn btn-primary-gradient px-4 flex items-center gap-2"
+            className="citygo-btn btn-primary-gradient px-4 py-2.5 flex items-center gap-2"
           >
             <span className="hidden sm:inline">В CityGo</span>
             <ExternalLink className="w-4 h-4" />
