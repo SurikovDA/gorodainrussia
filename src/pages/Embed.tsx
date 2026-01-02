@@ -33,18 +33,13 @@ const Embed = () => {
   const displayCities = filteredCities.slice(0, limit);
 
   return (
-    <div 
-      className="min-h-screen"
-      style={{ background: 'hsl(var(--background))' }}
-    >
-      <div className="px-3 py-4">
-        <CompactHero />
-        <div className="mb-4">
-          <SearchBar value={searchQuery} onChange={setSearchQuery} />
-        </div>
-        <CitiesGrid cities={displayCities} isLoading={isLoading} />
-        <CompactCTA />
+    <div className="min-h-screen p-3 md:p-4">
+      <CompactHero />
+      <div className="mb-4">
+        <SearchBar value={searchQuery} onChange={setSearchQuery} />
       </div>
+      <CitiesGrid cities={displayCities} isLoading={isLoading} />
+      <CompactCTA />
     </div>
   );
 };

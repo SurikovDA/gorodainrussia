@@ -42,18 +42,13 @@ const Index = () => {
   // Embed mode: minimal layout without header/footer
   if (isEmbed) {
     return (
-      <div 
-        className="min-h-screen"
-        style={{ background: 'hsl(var(--background))' }}
-      >
-        <div className="px-3 py-4">
-          <CompactHero />
-          <div className="mb-4">
-            <SearchBar value={searchQuery} onChange={setSearchQuery} />
-          </div>
-          <CitiesGrid cities={displayCities} isLoading={isLoading} />
-          <CompactCTA />
+      <div className="min-h-screen p-3 md:p-4">
+        <CompactHero />
+        <div className="mb-4">
+          <SearchBar value={searchQuery} onChange={setSearchQuery} />
         </div>
+        <CitiesGrid cities={displayCities} isLoading={isLoading} />
+        <CompactCTA />
       </div>
     );
   }
@@ -61,13 +56,10 @@ const Index = () => {
   // Compact mode (for landing page embedding without iframe)
   if (mode === 'compact') {
     return (
-      <div 
-        className="min-h-screen"
-        style={{ background: 'hsl(var(--background))' }}
-      >
-        <div className="container py-6">
+      <div className="min-h-screen py-6">
+        <div className="container">
           <CompactHero />
-          <div className="mb-4">
+          <div className="mb-5">
             <SearchBar value={searchQuery} onChange={setSearchQuery} />
           </div>
           <CitiesGrid cities={displayCities} isLoading={isLoading} />
@@ -79,7 +71,7 @@ const Index = () => {
 
   // Full mode (default)
   return (
-    <div className="min-h-screen flex flex-col" style={{ background: 'hsl(var(--background))' }}>
+    <div className="min-h-screen flex flex-col">
       <Header />
       
       <main className="flex-1">
