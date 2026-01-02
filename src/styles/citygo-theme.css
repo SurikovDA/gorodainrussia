@@ -224,18 +224,32 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   EMBED MODE - Transparent background support
+   EMBED MODE - Transparent background, no external padding
    ═══════════════════════════════════════════════════════════════════════════ */
+html.embed-mode,
+html.embed-mode body {
+  background: transparent !important;
+  background-color: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .embed-mode {
   --background: 0 0% 100% / 0;
 }
 
 .embed-mode.dark {
-  --background: 235 40% 4% / 0.95;
+  --background: 235 40% 4% / 0.02;
 }
 
 .embed-mode.site {
   --background: 220 15% 97% / 0;
+}
+
+/* Embed container - minimal wrapper */
+.embed-container {
+  background: transparent;
+  min-height: auto;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════

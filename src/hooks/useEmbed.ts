@@ -51,21 +51,25 @@ export const useEmbedHeight = () => {
   }, [location.search, location.pathname]);
 };
 
-// Hook to apply embed mode class to document
+// Hook to apply embed mode class to document (html element for transparent bg)
 export const useEmbedMode = () => {
   const { isEmbed } = useDisplayMode();
 
   useEffect(() => {
-    const root = document.documentElement;
+    const html = document.documentElement;
+    const body = document.body;
     
     if (isEmbed) {
-      root.classList.add('embed-mode');
+      html.classList.add('embed-mode');
+      body.classList.add('embed-mode');
     } else {
-      root.classList.remove('embed-mode');
+      html.classList.remove('embed-mode');
+      body.classList.remove('embed-mode');
     }
 
     return () => {
-      root.classList.remove('embed-mode');
+      html.classList.remove('embed-mode');
+      body.classList.remove('embed-mode');
     };
   }, [isEmbed]);
 
