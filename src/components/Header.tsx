@@ -3,6 +3,7 @@ import { Map, ExternalLink, Send, Menu, X } from "lucide-react";
 import { CITYGO_MAIN_URL, CITYGO_TELEGRAM_URL, FORM_URL } from "@/lib/constants";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "./ThemeToggle";
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -10,7 +11,7 @@ export const Header = () => {
   return (
     <>
       <header 
-        className="sticky top-0 z-50 w-full"
+        className="sticky top-0 z-50 w-full transition-colors duration-300"
         style={{
           background: 'var(--glass-bg)',
           backdropFilter: 'blur(var(--blur-glass))',
@@ -52,13 +53,11 @@ export const Header = () => {
               target="_blank" 
               rel="noopener noreferrer"
               className="citygo-btn citygo-btn-ghost text-sm"
-              style={{
-                borderColor: 'hsl(var(--primary) / 0.3)',
-              }}
             >
               <Send className="w-4 h-4 mr-2" />
               Telegram
             </a>
+            <ThemeToggle />
             <a 
               href={FORM_URL} 
               target="_blank" 
@@ -69,13 +68,16 @@ export const Header = () => {
             </a>
           </nav>
 
-          {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden p-2 rounded-lg hover:bg-muted/50 transition-colors"
-            onClick={() => setMobileMenuOpen(true)}
-          >
-            <Menu className="w-5 h-5" />
-          </button>
+          {/* Mobile Actions */}
+          <div className="flex items-center gap-2 md:hidden">
+            <ThemeToggle />
+            <button 
+              className="p-2 rounded-lg hover:bg-muted/50 transition-colors"
+              onClick={() => setMobileMenuOpen(true)}
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+          </div>
         </div>
       </header>
 

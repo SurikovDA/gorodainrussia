@@ -10,14 +10,14 @@ export const Hero = () => {
         <div 
           className="absolute -top-20 -left-20 w-80 h-80 rounded-full animate-float animate-pulse-soft"
           style={{
-            background: 'radial-gradient(circle at 30% 30%, rgba(166, 147, 255, 0.4), rgba(106, 141, 255, 0.15) 50%, transparent 70%)',
+            background: 'radial-gradient(circle at 30% 30%, hsl(var(--accent) / 0.35), hsl(var(--primary) / 0.15) 50%, transparent 70%)',
             filter: 'blur(28px)',
           }}
         />
         <div 
           className="absolute -bottom-20 -right-20 w-96 h-96 rounded-full animate-float animate-pulse-soft"
           style={{
-            background: 'radial-gradient(circle at 30% 30%, rgba(244, 184, 167, 0.4), rgba(166, 117, 255, 0.15) 50%, transparent 70%)',
+            background: 'radial-gradient(circle at 30% 30%, hsl(var(--secondary) / 0.35), hsl(var(--accent) / 0.15) 50%, transparent 70%)',
             filter: 'blur(28px)',
             animationDelay: '2s',
           }}
@@ -25,7 +25,7 @@ export const Hero = () => {
         <div 
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full animate-glow"
           style={{
-            background: 'radial-gradient(circle, rgba(106, 141, 255, 0.2), transparent 60%)',
+            background: 'radial-gradient(circle, hsl(var(--primary) / 0.2), transparent 60%)',
             filter: 'blur(40px)',
           }}
         />

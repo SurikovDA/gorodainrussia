@@ -12,10 +12,12 @@ import { CTASection } from "@/components/CTASection";
 import { getCityBySlug } from "@/data/cities";
 import { formatCurrency, formatPopulation } from "@/lib/formatters";
 import { useEmbed, useEmbedHeight } from "@/hooks/useEmbed";
+import { useTheme } from "@/hooks/useTheme";
 
 const CityDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const isEmbed = useEmbed();
+  const { theme } = useTheme();
   const city = getCityBySlug(slug || "");
 
   useEmbedHeight();
@@ -41,8 +43,9 @@ const CityDetail = () => {
           <span 
             className="w-fit px-3 py-1 rounded-full text-sm font-medium"
             style={{
-              background: 'hsl(var(--secondary) / 0.3)',
+              background: 'hsl(var(--secondary) / 0.2)',
               color: 'hsl(var(--secondary-foreground))',
+              border: '1px solid hsl(var(--secondary) / 0.3)',
             }}
           >
             {city.region}
@@ -131,14 +134,14 @@ const CityDetail = () => {
 
   if (isEmbed) {
     return (
-      <div className="min-h-screen section-softfog">
+      <div className="min-h-screen" style={{ background: 'hsl(var(--background))' }}>
         {content}
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen section-softfog flex flex-col">
+    <div className="min-h-screen flex flex-col" style={{ background: 'hsl(var(--background))' }}>
       <Header />
       <main className="flex-1">
         {content}

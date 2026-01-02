@@ -3,8 +3,10 @@ import { SearchBar } from "@/components/SearchBar";
 import { CitiesGrid } from "@/components/CitiesGrid";
 import { cities, searchCities } from "@/data/cities";
 import { useEmbedHeight } from "@/hooks/useEmbed";
+import { useTheme } from "@/hooks/useTheme";
 
 const Embed = () => {
+  useTheme(); // Initialize theme from URL params
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredCities, setFilteredCities] = useState(cities);
   const [isLoading, setIsLoading] = useState(true);
@@ -24,10 +26,10 @@ const Embed = () => {
   }, [searchQuery]);
 
   return (
-    <div className="min-h-screen section-softfog">
-      <div className="container py-6">
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold gradient-text text-center mb-4">
+    <div className="min-h-screen" style={{ background: 'hsl(var(--background))' }}>
+      <div className="px-3 py-4">
+        <div className="mb-4">
+          <h1 className="text-xl font-bold gradient-text text-center mb-3">
             Города России для переезда
           </h1>
           <SearchBar value={searchQuery} onChange={setSearchQuery} />

@@ -23,7 +23,7 @@
 }
 
 @layer components {
-  /* Glass Card - using CityGo tokens */
+  /* Glass Card */
   .glass-card {
     @apply relative overflow-hidden;
     background: var(--glass-bg);
@@ -41,7 +41,8 @@
 
   .glass-card-hover:hover {
     box-shadow: var(--shadow-hover);
-    transform: translateY(-4px);
+    transform: translateY(-2px);
+    border-color: hsl(var(--primary) / 0.2);
   }
 
   /* Gradient Text */
@@ -107,23 +108,23 @@
 
   .chip-success {
     @apply chip;
-    background: hsl(var(--success) / 0.15);
+    background: hsl(var(--success) / 0.12);
     color: hsl(var(--success));
-    border-color: hsl(var(--success) / 0.3);
+    border-color: hsl(var(--success) / 0.25);
   }
 
   .chip-warning {
     @apply chip;
-    background: hsl(var(--warning) / 0.15);
+    background: hsl(var(--warning) / 0.12);
     color: hsl(var(--warning));
-    border-color: hsl(var(--warning) / 0.3);
+    border-color: hsl(var(--warning) / 0.25);
   }
 
   .chip-destructive {
     @apply chip;
-    background: hsl(var(--destructive) / 0.15);
+    background: hsl(var(--destructive) / 0.12);
     color: hsl(var(--destructive));
-    border-color: hsl(var(--destructive) / 0.3);
+    border-color: hsl(var(--destructive) / 0.25);
   }
 
   /* Section typography */
@@ -141,25 +142,28 @@
     @apply text-sm;
     color: hsl(var(--muted-foreground));
   }
-
-  /* Hero background with CityGo orbs */
+  /* Hero background */
   .hero-bg {
     background: 
-      radial-gradient(60% 50% at 0% 0%, rgba(166, 147, 255, 0.18), transparent 60%),
-      radial-gradient(55% 45% at 100% 0%, rgba(244, 184, 167, 0.2), transparent 60%),
-      radial-gradient(50% 50% at 0% 100%, rgba(166, 147, 255, 0.12), transparent 55%),
-      radial-gradient(55% 55% at 100% 100%, rgba(244, 184, 167, 0.18), transparent 60%),
-      var(--gradient-soft-fog);
+      radial-gradient(60% 50% at 0% 0%, rgba(166, 147, 255, 0.15), transparent 60%),
+      radial-gradient(55% 45% at 100% 0%, rgba(244, 184, 167, 0.15), transparent 60%),
+      radial-gradient(50% 50% at 0% 100%, rgba(106, 141, 255, 0.1), transparent 55%),
+      radial-gradient(55% 55% at 100% 100%, rgba(244, 184, 167, 0.12), transparent 60%),
+      hsl(var(--background));
+  }
+  
+  :global(.dark) .hero-bg {
+    background: 
+      radial-gradient(60% 50% at 0% 0%, rgba(106, 141, 255, 0.12), transparent 60%),
+      radial-gradient(55% 45% at 100% 0%, rgba(166, 117, 255, 0.1), transparent 60%),
+      radial-gradient(50% 50% at 0% 100%, rgba(106, 141, 255, 0.08), transparent 55%),
+      radial-gradient(55% 55% at 100% 100%, rgba(244, 184, 167, 0.08), transparent 60%),
+      hsl(var(--background));
   }
 
-  /* Section soft-fog background */
+  /* Section background */
   .section-softfog {
-    background:
-      radial-gradient(60% 50% at 0% 0%, rgba(166, 147, 255, 0.12), transparent 55%),
-      radial-gradient(55% 45% at 100% 0%, rgba(244, 184, 167, 0.14), transparent 60%),
-      radial-gradient(50% 50% at 0% 100%, rgba(106, 141, 255, 0.12), transparent 55%),
-      radial-gradient(55% 55% at 100% 100%, rgba(244, 184, 167, 0.12), transparent 60%),
-      var(--gradient-soft-fog);
+    background: hsl(var(--background));
   }
 }
 
@@ -173,19 +177,19 @@
   }
 
   .animate-glow {
-    animation: citygo-glow 3s ease-in-out infinite;
+    animation: citygo-glow 4s ease-in-out infinite;
   }
 
   .animate-fade-in {
-    animation: citygo-fade-in 0.6s ease-out forwards;
+    animation: citygo-fade-in 0.5s ease-out forwards;
   }
 
   .animate-slide-up {
-    animation: citygo-fade-up 0.8s ease-out forwards;
+    animation: citygo-fade-up 0.6s ease-out forwards;
   }
 
   .animate-pulse-soft {
-    animation: citygo-pulse-soft 3s ease-in-out infinite;
+    animation: citygo-pulse-soft 4s ease-in-out infinite;
   }
 }
 
@@ -204,7 +208,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent, hsl(var(--muted-foreground) / 0.1), transparent);
+  background: linear-gradient(90deg, transparent, hsl(var(--muted-foreground) / 0.08), transparent);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
