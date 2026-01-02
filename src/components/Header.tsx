@@ -55,7 +55,7 @@ export const Header = () => {
               className="citygo-btn citygo-btn-ghost text-sm"
             >
               <Send className="w-4 h-4 mr-2" />
-              Telegram
+              В CityGo
             </a>
             <ThemeToggle />
             <a 
@@ -138,7 +138,7 @@ export const Header = () => {
             >
               <div className="flex items-center gap-3">
                 <Send className="w-5 h-5 text-primary" />
-                <span className="font-medium">Telegram-канал</span>
+                <span className="font-medium">В CityGo</span>
               </div>
               <ExternalLink className="w-4 h-4 text-muted-foreground" />
             </a>
