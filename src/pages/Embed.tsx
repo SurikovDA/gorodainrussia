@@ -1,17 +1,22 @@
 import { useState, useEffect } from "react";
 import { SearchBar } from "@/components/SearchBar";
 import { CitiesGrid } from "@/components/CitiesGrid";
+import { CompactCTA } from "@/components/CompactCTA";
+import { CompactHero } from "@/components/CompactHero";
 import { cities, searchCities } from "@/data/cities";
-import { useEmbedHeight } from "@/hooks/useEmbed";
+import { useEmbedHeight, useEmbedMode } from "@/hooks/useEmbed";
+import { useDisplayMode } from "@/hooks/useDisplayMode";
 import { useTheme } from "@/hooks/useTheme";
 
 const Embed = () => {
-  useTheme(); // Initialize theme from URL params
+  useTheme();
+  useEmbedMode();
+  useEmbedHeight();
+  
+  const { limit } = useDisplayMode();
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredCities, setFilteredCities] = useState(cities);
   const [isLoading, setIsLoading] = useState(true);
-
-  useEmbedHeight();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -25,16 +30,20 @@ const Embed = () => {
     setFilteredCities(results);
   }, [searchQuery]);
 
+  const displayCities = filteredCities.slice(0, limit);
+
   return (
-    <div className="min-h-screen" style={{ background: 'hsl(var(--background))' }}>
+    <div 
+      className="min-h-screen"
+      style={{ background: 'hsl(var(--background))' }}
+    >
       <div className="px-3 py-4">
+        <CompactHero />
         <div className="mb-4">
-          <h1 className="text-xl font-bold gradient-text text-center mb-3">
-            Города России для переезда
-          </h1>
           <SearchBar value={searchQuery} onChange={setSearchQuery} />
         </div>
-        <CitiesGrid cities={filteredCities} isLoading={isLoading} />
+        <CitiesGrid cities={displayCities} isLoading={isLoading} />
+        <CompactCTA />
       </div>
     </div>
   );

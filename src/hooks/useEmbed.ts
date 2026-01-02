@@ -1,22 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useDisplayMode } from './useDisplayMode';
 
 export const useEmbed = () => {
-  const location = useLocation();
-  const [isEmbed, setIsEmbed] = useState(false);
-
-  useEffect(() => {
-    const searchParams = new URLSearchParams(location.search);
-    const embedParam = searchParams.get('embed');
-    const isEmbedRoute = location.pathname === '/embed';
-    
-    setIsEmbed(embedParam === '1' || isEmbedRoute);
-  }, [location]);
-
+  const { isEmbed } = useDisplayMode();
   return isEmbed;
 };
 
 export const useEmbedHeight = () => {
+  const location = useLocation();
+
   useEffect(() => {
     const sendHeight = () => {
       const height = document.documentElement.scrollHeight;
@@ -39,9 +32,42 @@ export const useEmbedHeight = () => {
     // Also listen for window resize
     window.addEventListener('resize', sendHeight);
 
+    // Create MutationObserver for dynamic content changes
+    const mutationObserver = new MutationObserver(() => {
+      sendHeight();
+    });
+
+    mutationObserver.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+    });
+
     return () => {
       resizeObserver.disconnect();
+      mutationObserver.disconnect();
       window.removeEventListener('resize', sendHeight);
     };
-  }, []);
+  }, [location.search, location.pathname]);
+};
+
+// Hook to apply embed mode class to document
+export const useEmbedMode = () => {
+  const { isEmbed } = useDisplayMode();
+
+  useEffect(() => {
+    const root = document.documentElement;
+    
+    if (isEmbed) {
+      root.classList.add('embed-mode');
+    } else {
+      root.classList.remove('embed-mode');
+    }
+
+    return () => {
+      root.classList.remove('embed-mode');
+    };
+  }, [isEmbed]);
+
+  return isEmbed;
 };
